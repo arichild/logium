@@ -10,6 +10,11 @@
 
   <title>Start-project</title>
 
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
   <!-- magnific -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 
@@ -20,6 +25,51 @@
 <div class="wrapper" id="wrapper">
   <header class="header" id="header">
     <div class="container">
-      <h1>header</h1>
+      <div class="header-content">
+        <div class="header-logo">
+          <a href="#">
+            <img src="./images/logo.svg" alt="">
+          </a>
+        </div>
+
+        <div class="header-search">
+          <form action="">
+            <input type="text" placeholder="Поиск инструкции по названию">
+
+            <button class="header-search-btn search">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 21L16.7 16.7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <button class="header-search-btn clear">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.926 13.9261L2.07422 2.07422" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M13.9258 2.07422L2.074 13.9261" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="header-contacts">
+          <a href="tel:88001013330" class="header-contacts-link">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.375 1C5.875 1 7.875 5.5 7.875 6C7.875 7 6.375 8 5.875 9C5.375 10 6.375 11 7.375 12C7.765 12.39 9.375 14 10.375 13.5C11.375 13 12.375 11.5 13.375 11.5C13.875 11.5 18.375 13.5 18.375 14C18.375 16 16.875 17.5 15.375 18C13.875 18.5 12.875 18.5 10.875 18C8.875 17.5 7.375 17 4.875 14.5C2.375 12 1.875 10.5 1.375 8.5C0.875 6.5 0.875 5.5 1.375 4C1.875 2.5 3.375 1 5.375 1Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            8 800 101-33-30
+          </a>
+
+          <a href="mailto:help@tdegregor.ru" class="header-contacts-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.999878 5.57143C0.999878 4.88944 1.25742 4.23539 1.71584 3.75315C2.17426 3.27092 2.79602 3 3.44432 3H20.5554C21.2037 3 21.8255 3.27092 22.2839 3.75315C22.7423 4.23539 22.9999 4.88944 22.9999 5.57143V18.4286C22.9999 19.1106 22.7423 19.7646 22.2839 20.2468C21.8255 20.7291 21.2037 21 20.5554 21H3.44432C2.79602 21 2.17426 20.7291 1.71584 20.2468C1.25742 19.7646 0.999878 19.1106 0.999878 18.4286V5.57143Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1 5.57227L12 13.2866L23 5.57227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            help@tdegregor.ru
+          </a>
+        </div>
+      </div>
     </div>
   </header>

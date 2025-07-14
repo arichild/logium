@@ -10,6 +10,10 @@
 
 /* pages */
 @import "index";
+@import "policy";
+@import "page-404";
+@import "catalog";
+@import "result";
 
 * {
   box-sizing: border-box;
@@ -34,7 +38,7 @@ body {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.42;
-  color: #000;
+  color: #0C1529;
   background-color: #fff;
 }
 
@@ -65,4 +69,14 @@ body {
   max-width: $widthContainer;
   padding-left: $paddingContainer;
   padding-right: $paddingContainer;
+
+  @media(max-width: 1259px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media(max-width: 599px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

@@ -1,0 +1,48 @@
+.result {
+  padding-top: 62px;
+  padding-bottom: 66px;
+
+  &-txt {
+    font-size: 24px;
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .ui-title {
+      margin-bottom: 30px;
+    }
+
+    span {
+      font-weight: 500;
+      color: #2563EB;
+    }
+  }
+
+  @media(max-width: 1259px) {
+    padding-top: 20px;
+    padding-bottom: 83px;
+
+    &-txt {
+      font-size: 20px;
+
+      .ui-title {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  @media(max-width: 599px) {
+    padding-top: 16px;
+    padding-bottom: 27px;
+
+    &-txt {
+      font-size: 14px;
+
+      .ui-title {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}

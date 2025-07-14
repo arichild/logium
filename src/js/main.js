@@ -93,4 +93,48 @@ $( document ).ready(function() {
       })
     });
   }
+
+  // search
+  const btn = $('.header-search-btn.clear')
+  const search = $('.header-search input')
+
+  search.on('input', function() {
+    let value = $(this).val()
+
+    if (value === '') {
+      btn.removeClass('active')
+    } else {
+      btn.addClass('active')
+    }
+  });
+
+  btn.on('click', (e) => {
+    e.preventDefault();
+
+    search.val('')
+
+    if (search.val() === '') {
+      btn.removeClass('active')
+    } else {
+      btn.addClass('active')
+    }
+  });
+
+  // cookie
+  const cookies = document.querySelector('.cookie')
+	const cookiesBtn = document.querySelector('.cookie .ui-btn')
+	const isShowedCookies = localStorage.getItem('isShowedCookies')
+
+	if (cookies) {
+		if (!isShowedCookies) cookies.classList.add('active')
+
+		if (cookiesBtn) {
+			cookiesBtn.addEventListener('click', e => {
+				e.preventDefault()
+				cookies.style.opacity = 0
+				setTimeout(() => cookies.classList.remove('active'), 400)
+				localStorage.setItem('isShowedCookies', 1)
+			})
+		}
+	}
 });

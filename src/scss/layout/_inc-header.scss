@@ -1,3 +1,260 @@
 .header {
+  padding: 15px 0;
+  background-color: #fff;
 
+  &-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &-logo {
+    line-height: 0;
+    transition: opacity .4s ease;
+    margin-right: 56px;
+    max-width: 137px;
+    flex: 0 0 137px;
+
+    a {
+      display: inline-block;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &-search {
+    position: relative;
+    margin-right: 56px;
+    max-width: calc(100% - 425px);
+    flex: 0 0 calc(100% - 425px);
+
+    input {
+      height: 56px;
+      width: 100%;
+      background-color: #F7FBFC;
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      border-radius: 10px;
+      padding: 0 20px;
+      padding-left: 58px;
+      font-size: 16px;
+      font-family: Inter, sans-serif;
+      transition: border-color .4s ease;
+      outline: none;
+
+      &::placeholder {
+        color: #8F9EB1;
+      }
+
+      &:hover {
+        border-color: #2563EB;
+      }
+
+      &:focus {
+        border-color: #2563EB;
+
+        &~.header-search-btn.clear {
+          display: block;
+        }
+      }
+    }
+
+    &-btn {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      line-height: 0;
+      cursor: pointer;
+
+      svg {
+        stroke: #2563EB;
+      }
+
+      &.search {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 20px;
+      }
+
+      &.clear {
+        display: none;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translate(0, -50%);
+
+        &.active {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &-contacts {
+    max-width: 176px;
+    flex: 0 0 176px;
+
+    &-link {
+      display: block;
+      position: relative;
+      padding-left: 32px;
+      transition: color .4s ease;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        color: #2563EB;
+
+        svg {
+          stroke: #2563EB;
+        }
+      }
+
+      svg {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 0;
+        stroke: #0C1529;
+        transition: stroke .4s ease;
+      }
+    }
+  }
+
+  @media(max-width: 1259px) {
+    padding: 6px 0;
+
+    &-content {
+      flex-wrap: wrap;
+    }
+
+    &-logo {
+      order: 1;
+      max-width: calc(100% - 80px);
+      flex: 0 0 calc(100% - 80px);
+      margin-right: 0;
+      margin-bottom: 16px;
+    }
+
+    &-contacts {
+      order: 2;
+      max-width: 80px;
+      flex: 0 0 80px;
+      display: flex;
+      align-items: center;
+      // position: relative;
+      // bottom: 6px;
+      margin-bottom: 16px;
+
+      &-link {
+        font-size: 0;
+        padding-left: 0;
+        margin-bottom: 0;
+        width: 32px;
+        height: 32px;
+        margin-right: 16px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        svg {
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 32px;
+          height: 32px;
+        }
+
+        // &.phone {
+        //   svg {
+        //     width: 23px;
+        //     height: 23px;
+        //   }
+        // }
+
+        // &.email {
+        //   svg {
+        //     width: 29px;
+        //     height: 24px;
+        //   }
+        // }
+      }
+    }
+
+    &-search {
+      order: 3;
+      max-width: 100%;
+      flex: 0 0 100%;
+      margin-right: 0;
+    }
+  }
+
+  @media(max-width: 599px) {
+    padding-top: 9px;
+    padding-bottom: 4px;
+
+    &-logo {
+      margin-bottom: 8px;
+      max-width: calc(100% - 50px);
+      flex: 0 0 calc(100% - 50px);
+
+      a {
+        max-width: 80px;
+      }
+    }
+
+    &-contacts {
+      margin-bottom: 8px;
+      max-width: 50px;
+      flex: 0  0 50px;
+
+      &-link {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    &-search {
+      input {
+        height: 36px;
+        border-radius: 8px;
+        padding-left: 28px;
+        font-size: 12px;
+      }
+
+      &-btn {
+        &.search {
+          left: 8px;
+
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+
+        &.clear {
+          right: 8px;
+
+          svg {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+    }
+  }
 }
