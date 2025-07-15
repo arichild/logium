@@ -1,0 +1,237 @@
+.manual {
+  padding-bottom: 32px;
+
+  .ui-breadcrumbs {
+    @media(min-width: 1259px) {
+      padding-bottom: 23px;
+    }
+  }
+
+
+  &-img {
+    line-height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    grid-area: img;
+    max-width: 500px;
+    // max-height: 500px;
+    // width: 100%;
+    // height: 100%;
+    aspect-ratio: 1 / 1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-info {
+    display: grid;
+    grid-template-columns: calc(100% - 746px) 746px;
+    grid-template-rows: auto;
+    grid-auto-rows: max-content;
+    gap: 0 40px;
+    grid-template-areas:
+        "img title"
+        "img source";
+
+    &-source {
+      grid-area: source;
+    }
+
+    .ui-title {
+      margin-bottom: 30px;
+      grid-area: title;
+    }
+
+    &-subtitle {
+      font-size: 16px;
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    &-links {
+      display: flex;
+      margin-bottom: 26px;
+    }
+
+    &-link {
+      display: block;
+      line-height: 0;
+      height: 60px;
+      border-radius: 8px;
+      background-color: #DBEAFE;
+      margin-right: 10px;
+      padding: 0 16px;
+      min-width: 230px;
+      position: relative;
+      transition: background-color .4s ease;
+      margin-right: 16px;
+
+      @media(min-width: 599px) {
+        &:hover {
+          background-color: #BEDAFF;
+        }
+      }
+
+      &::after {
+        content: "";
+        background-image: url("../images/export.svg");
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 20px;
+        height: 20px;
+      }
+
+      img {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &-download {
+      font-size: 16px;
+      line-height: 1.2;
+      color: #2563EB;
+      transition: color .4s ease;
+      position: relative;
+      padding-right: 26px;
+
+      svg {
+        stroke: #2563EB;
+        transition: stroke .4s ease;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+
+      @media(min-width: 599px) {
+        &:hover {
+          color: #1E40AF;
+
+          svg {
+            stroke: #1E40AF;
+          }
+        }
+      }
+    }
+  }
+
+  @media(max-width: 1259px) {
+    padding-bottom: 58px;
+
+    &-info {
+      grid-template-columns: 1fr;
+      gap: 0;
+      grid-template-areas:
+      'title'
+      'img'
+      'source';
+
+      .ui-title {
+        grid-area: title;
+      }
+    }
+
+    br {
+      display: none;
+    }
+
+    &-img {
+      max-width: 536px;
+      max-height: 537px;
+      width: 100%;
+      height: calc(100% - 16px);
+      margin: 0 auto;
+      margin-bottom: 16px;
+      grid-area: img;
+    }
+
+    &-source {
+      grid-area: source;
+    }
+
+    &-info {
+      max-width: 100%;
+
+      &-subtitle {
+        margin-bottom: 14px;
+        font-size: 20px;
+      }
+
+      &-links {
+        margin-bottom: 24px;
+      }
+
+      &-link {
+        max-width: 50%;
+        width: 100%;
+        height: 56px;
+        min-width: auto;
+      }
+
+      &-download {
+        font-size: 20px;
+      }
+    }
+  }
+
+  @media(max-width: 599px) {
+    padding-bottom: 33px;
+
+    .ui-breadcrumbs {
+      padding-bottom: 8px;
+    }
+
+    &-info {
+      .ui-title {
+        margin-bottom: 12px;
+      }
+
+      &-subtitle {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      &-links {
+        margin-bottom: 14px;
+      }
+
+      &-link {
+        height: 40px;
+        padding: 0 14px;
+        margin-right: 8px;
+
+        img {
+          width: 85px;
+        }
+
+        &::after {
+          width: 16px;
+          height: 16px;
+          right: 14px;
+          background-size: 100%;
+        }
+      }
+
+      &-download {
+        font-size: 14px;
+
+        svg {
+          height: 16px;
+        }
+      }
+    }
+  }
+}

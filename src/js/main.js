@@ -1,100 +1,28 @@
 $( document ).ready(function() {
-  // popup
-  $(document).on("click", ".mfp-link", function () {
-    var a = $(this);
+  // cookie
+  const cookies = document.querySelector('.cookie')
+	const cookiesBtn = document.querySelector('.cookie .ui-btn')
+	const isShowedCookies = localStorage.getItem('isShowedCookies')
 
-    $.magnificPopup.open({
-      items: { src: a.attr("data-href") },
-      type: "ajax",
-      overflowY: "scroll",
-      removalDelay: 300,
-      mainClass: 'my-mfp-zoom-in',
-      ajax: {
-        tError: "Error. Not valid url",
-      },
-      callbacks: {
-        open: function () {
-          setTimeout(function(){
-            $('.mfp-wrap').addClass('not_delay');
-            $('.mfp-popup').addClass('not_delay');
-          },700);
-        }
-      },
+	if (cookies) {
+		if (!isShowedCookies) cookies.classList.add('active')
 
-      callbacks: {
-        open: function() {
-          document.documentElement.style.overflow = 'hidden'
-        },
+		if (cookiesBtn) {
+			cookiesBtn.addEventListener('click', e => {
+				e.preventDefault()
 
-        close: function() {
-          document.documentElement.style.overflow = ''
-        }
-      }
-    });
-    return false;
-  });
-
-
-
-  // validate
-  $.validator.messages.required = 'Пожалуйста, введите данные';
-
-  jQuery.validator.addMethod("lettersonly", function(value, element) {
-    return this.optional(element) || /^([а-яё ]+|[a-z ]+)$/i.test(value);
-  }, "Поле может состоять из букв и пробелов, без цифр");
-
-  jQuery.validator.addMethod("phone", function (value, element) {
-    if (value.startsWith('+375')) {
-      return /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){12}(\s*)?$/i.test(value);
-    } else if (value.startsWith('+7')) {
-      return /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11}(\s*)?$/i.test(value);
-    } else {
-      return /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11,14}(\s*)?$/i.test(value);
-    }
-  }, "Введите полный номер");
-
-
-
-  // imask
-  let phone = document.querySelectorAll('.phone-mask')
-
-  if(phone.length) {
-    phone.forEach(element => {
-      IMask(element, {
-        mask: [
-          {
-            mask: '+{375} (00) 000 00 00',
-            startsWith: '375',
-            overwrite: true,
-            lazy: false,
-            placeholderChar: '_',
-          },
-          {
-            mask: '+{7} (000) 000 00 00',
-            startsWith: '7',
-            overwrite: true,
-            lazy: false,
-            placeholderChar: '_',
-          },
-          {
-            mask: '+0000000000000',
-            startsWith: '',
-            country: 'unknown'
-          }
-        ],
-
-        dispatch: function (appended, dynamicMasked) {
-          var number = (dynamicMasked.value + appended).replace(/\D/g, '');
-
-          return dynamicMasked.compiledMasks.find(function (m) {
-            return number.indexOf(m.startsWith) === 0;
-          });
-        }
-      })
-    });
-  }
+				cookies.classList.remove('active')
+				localStorage.setItem('isShowedCookies', 1)
+			})
+		}
+	}
 
   // search
+  const $input = $('.header-search input[type="text"]');
+  const $result = $('.result');
+  const $resultBody = $('.result-body');
+  const $resultWrapper = $('.header-search-wrapper');
+  const $html = $('html');
   const btn = $('.header-search-btn.clear')
   const search = $('.header-search input')
 
@@ -120,21 +48,98 @@ $( document ).ready(function() {
     }
   });
 
-  // cookie
-  const cookies = document.querySelector('.cookie')
-	const cookiesBtn = document.querySelector('.cookie .ui-btn')
-	const isShowedCookies = localStorage.getItem('isShowedCookies')
+  $input.on('input', function () {
+    const value = $(this).val();
 
-	if (cookies) {
-		if (!isShowedCookies) cookies.classList.add('active')
+    if (value.length >= 2) {
+      const items = $result.find('.result-item').length;
 
-		if (cookiesBtn) {
-			cookiesBtn.addEventListener('click', e => {
-				e.preventDefault()
-				cookies.style.opacity = 0
-				setTimeout(() => cookies.classList.remove('active'), 400)
-				localStorage.setItem('isShowedCookies', 1)
-			})
-		}
-	}
+      if (items > 0) {
+        $result.addClass('active');
+        $resultBody.addClass('active');
+        $resultWrapper.addClass('active');
+        $html.addClass('active');
+      } else {
+        $result.addClass('active empty');
+        $resultBody.removeClass('active');
+        $resultWrapper.addClass('active');
+        $html.addClass('active');
+      }
+    } else {
+      $result.removeClass('active');
+      $resultBody.removeClass('active');
+      $resultWrapper.removeClass('active');
+      $html.removeClass('active');
+    }
+  });
+
+  // $input.on('input', function () {
+  //   const value = $(this).val();
+
+  //   if (value.length >= 2) {
+  //     $.ajax({
+  //       url: '/search', // условный url
+  //       method: 'GET',
+  //       data: { query: value },
+  //       success: function (data) {
+  //         if (data.items.length > 0) {
+  //           const result = data.items.map(item => `
+  //             <a href="#" class="result-item">
+  //               <div class="result-item-img">
+  //                 <img loading="lazy" src="${item.img}" alt="">
+  //               </div>
+  //               <div class="result-item-title">${item.title}</div>
+  //             </a>
+  //           `).join('');
+  //           $result.find('.result-content').html(result);
+
+
+  //           $result.removeClass('empty').addClass('active');
+  //           $resultBody.addClass('active');
+  //           $resultWrapper.addClass('active');
+  //           $html.addClass('active');
+  //         } else {
+  //           $result.addClass('active empty');
+  //           $resultBody.removeClass('active');
+  //           $resultWrapper.addClass('active');
+  //           $html.addClass('active');
+  //         }
+  //       }
+  //     });
+  //   } else {
+  //     $result.removeClass('active empty');
+  //     $resultBody.removeClass('active');
+  //     $resultWrapper.removeClass('active');
+  //     $html.removeClass('active');
+  //   }
+  // });
+
+  $(document).on('click', function (e) {
+    const $headerSearch = $('.header-search');
+
+    if (!$headerSearch.is(e.target) && $headerSearch.has(e.target).length === 0) {
+      $result.removeClass('active');
+      $resultBody.removeClass('active');
+      $resultWrapper.removeClass('active');
+      $html.removeClass('active');
+    }
+  });
+
+  // copyright
+  const yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  // header
+  const $header = $('.header');
+  const stickyOffset = $header.offset().top;
+
+  $(window).on('scroll', function () {
+    if ($(window).scrollTop() > stickyOffset) {
+      $header.addClass('sticky');
+    } else {
+      $header.removeClass('sticky');
+    }
+  });
 });
